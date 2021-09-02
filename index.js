@@ -3,6 +3,7 @@ const _ = require('underscore');
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MEMBERS] });
 
+
 client.once('ready', () => {
 	console.log('Ready!');
   client.guilds.cache.forEach(guild => {
@@ -10,10 +11,12 @@ client.once('ready', () => {
     })
 });
 
+const thebot = '882990260345249853';
+
 client.on('message', message => {
 	if (message.author.bot) return;
 
-	if (message.content == '<@!882990260345249853>') {
+	if (message.content == '<@!' + thebot + '>') {
         let theUser = message.guild.members.cache.random().id
         message.channel.send('<@' + theUser + '>');
 }});
